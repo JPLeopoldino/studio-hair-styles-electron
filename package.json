@@ -11,7 +11,7 @@
     "release": "gulp release",
     "make-icon": "gulp make-icon"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/JPLeopoldino/studio-hair-styles-electron.git",
   "keywords": [
     "Electron",
     "quick",
@@ -47,7 +47,7 @@
     "react-router-dom": "^5.0.0"
   },
   "build": {
-    "appId": "com.karmadust.electrate",
+    "appId": "com.hairstyles.electrate",
     "files": [
       "app/**/*",
       "node_modules/**/*",
