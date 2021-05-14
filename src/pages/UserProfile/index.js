@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContainerProfile, Header, ImgProfile, UserInfo, Buttons, Edit, History, MainText} from './styles';
+import {ContainerProfile, Header, ImgProfile, UserInfo, Buttons, Edit, History, MainText, Text} from './styles';
 
 const UserProfile = () =>{
     return(
@@ -10,8 +10,8 @@ const UserProfile = () =>{
 
                 <UserInfo>
                     <MainText>USER NAME</MainText>
-                    <p>EMAIL@EMAIL.COM</p>
-                    <p>1612345678</p>
+                    <Text>EMAIL@EMAIL.COM</Text>
+                    <Text>1612345678</Text>
                 </UserInfo>
 
                 

@@ -29,6 +29,10 @@ export const MainText = styled.h1`
     font-weight:300;
 `;
 
+export const Text = styled.p`
+    line-height:10px;
+`;
+
 export const Buttons = styled.div`
     background-color:#7F3FD0;
     padding:10px;text-align:center;
