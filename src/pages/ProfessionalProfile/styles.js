@@ -17,7 +17,6 @@ export const ImgProfile = styled.img`
     width:27%;float:left;
     height:250px;border-radius:15px;
     margin-top:25px;
-   
 `;
 
 export const UserInfo = styled.div`
@@ -36,7 +35,7 @@ export const Text = styled.p`
 export const Buttons = styled.div`
     background-color:#7F3FD0;
     padding:10px;text-align:center;
-    width:100%;height:58px;
+    width:100%;height:50px;
 `;
 
 export const Edit = styled.div`

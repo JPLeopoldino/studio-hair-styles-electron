@@ -1,10 +1,11 @@
 import React from 'react';
 
-import UserProfile from './pages/UserProfile';
+import ProfessionalProfile from './pages/ProfessionalProfile';
+import ServicesHistory from './pages/ServicesHistory';
 
 const App = () =>{
     return (
-      <UserProfile/>
+      <ServicesHistory/>
     );
 }
 
