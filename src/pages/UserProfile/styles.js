@@ -1,38 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    background-color:#5E21AB;
-    color:white;width:100%;
-    padding:6px;height:250px;
+
+export const ContainerProfile = styled.div`
+    color:white;font-size:1.7rem;
 `;
 
-export const ImgProfile = styled.div`
+export const Header = styled.div`
+    background-color:#5E21AB;
+    padding:6px;height:300px;
+    width:100%;
+`;
+
+export const ImgProfile = styled.img`
     background-color:whitesmoke;
-    width:27%;float:left;padding:16px;
-    height:200px;border-radius:16px;
+    width:27%;float:left;
+    height:250px;border-radius:15px;
+    margin-top:25px;
    
 `;
 
 export const UserInfo = styled.div`
-    font-size:1.3rem;
-    font-family:sans-serif;
-    color:white;width:65%;
-    float:right;font-family: 'Inter', sans-serif;
+    width:65%;float:right;
+    font-weight:300;
+`;
+
+export const MainText = styled.h1`
     font-weight:300;
 `;
 
 export const Buttons = styled.div`
     background-color:#7F3FD0;
-    padding:10px;color:white;
-    width:100%;height:60px;
-    font-size:1.7rem;
-    font-family: 'Inter', sans-serif;
+    padding:10px;text-align:center;
+    width:100%;height:58px;
 `;
 
 export const Edit = styled.div`
     width:50%;float:left;
-    
 `;
 
 export const History = styled.div`
