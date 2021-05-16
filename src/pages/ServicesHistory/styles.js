@@ -7,6 +7,11 @@ export const HistoryContainer = styled.div`
     color:white;padding:5px;
     font-size:1.7rem;font-weight:300;
     background-color:#5E21AB;
+
+
+    @media(max-width: 400px) {
+        font-size:1.4rem;
+    }
 `;
 
 export const List = styled.li`
