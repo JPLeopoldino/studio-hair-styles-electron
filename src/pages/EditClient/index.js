@@ -9,9 +9,9 @@ const EditClient = () =>{
 
                 <FormDiv>
                     <InputStyles type="text" placeholder="Nome"/>
-                    <InputStyles type="text" placeholder="Email"/>
+                    <InputStyles type="email" placeholder="Email"/>
                     <InputStyles type="text" placeholder="Senha"/>
-                    <InputStyles type="text" placeholder="Telefone"/>
+                    <InputStyles type="number" placeholder="Telefone"/>
                     <InputStyles type="text" placeholder="Data de Nascimento"/>
 
                     <br/><Button>ENVIAR</Button>

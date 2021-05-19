@@ -4,7 +4,7 @@ export const Container = styled.div`
     height:700px;
     color:white;padding:5px;
     font-size:1.7rem;font-weight:300;
-    background-color:#5E21AB;
+    background-image: linear-gradient(#5E21AB, #b478ed);
 `;
 
 export const FormDiv = styled.form`
@@ -22,7 +22,7 @@ export const InputStyles = styled.input`
 `;
 
 export const Button = styled.button`
-    padding:8px;background-color:#1495BE;
+    padding:8px;background-color:#ff4dff;
     border:none;color:white;
     font-size:1rem;
     margin-top:5px;margin-left:5px;
