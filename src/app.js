@@ -6,9 +6,9 @@ import EditClient from './pages/EditClient';
 
 const App = () =>{
     return (
-      /* <ProfessionalProfile /> */
+      <ProfessionalProfile />
       /* <ServicesHistory/> */
-      <EditClient/>
+      /* <EditClient/> */
     );
 }
 

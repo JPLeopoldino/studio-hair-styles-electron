@@ -22,7 +22,7 @@ const ProfessionalProfile = () =>{
             </Buttons>
 
             <div style={{backgroundColor:'blueviolet',height:400,}}>
-                <p>--agenda visualição de horários marcados--</p>
+                <p>--agenda</p>
             </div>
         </ContainerProfile>
     );
