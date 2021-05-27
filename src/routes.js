@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Login from './pages/Login';
 import ProfessionalProfile from './pages/ProfessionalProfile';
@@ -12,39 +12,18 @@ import SingupProfessional from './pages/SingupProfessional';
 
 const Routes = () =>{
     return(
-    <Switch>
-        <Route path="/searchClient">
-            <SearchClient/>
-        </Route>
-
-        <Route path="/singupClient">
-            <SingupClient/>
-        </Route>
-
-        <Route path="/signupProfessional">
-            <SingupProfessional/>
-        </Route>
-
-        <Route path="/servicesHistory">
-            <ServicesHistory/>
-        </Route>
-
-        <Route path="/editClient">
-            <EditClient/>
-        </Route>
-
-        <Route path="/professionalProfile">
-            <ProfessionalProfile/>
-        </Route>
-
-        <Route path="/home">
-            <Home/>
-        </Route>
-
-        <Route path="/">
-            <Login/>
-        </Route>
-    </Switch>
+    <HashRouter>
+        <Switch>
+            <Route path="/searchClient" component={SearchClient}/>
+            <Route path="/singupClient" component={SingupClient}/>
+            <Route path="/signupProfessional" component={SingupProfessional}/>
+            <Route path="/servicesHistory" component={ServicesHistory}/>
+            <Route path="/editClient" component={EditClient}/>
+            <Route path="/professionalProfile" component={ProfessionalProfile}/>
+            <Route path="/home" component={Home}/>
+            <Route exact path="/" component={Login}/>
+        </Switch>
+    </HashRouter>
     );
 }
 
