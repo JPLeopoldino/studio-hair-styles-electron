@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container, FormDiv, InputStyles, Button } from './styles';
+import {Link} from 'react-router-dom';
 
 const EditClient = () =>{
     return(
         <div>
             <Container>
-                <h1 style={{textAlign:'center'}}>Editar Usuario</h1>
+                <h1 style={{textAlign:'center'}}>Editar Usuário</h1>
 
                 <FormDiv>
                     <InputStyles type="text" placeholder="Nome"/>
@@ -15,6 +16,11 @@ const EditClient = () =>{
                     <InputStyles type="text" placeholder="Data de Nascimento"/>
 
                     <br/><Button>ENVIAR</Button>
+
+                    <Link to="/professionalProfile">
+                        <Button>VOLTAR</Button>
+                    </Link>
+                    
                 </FormDiv>
             </Container>
         </div>
