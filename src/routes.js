@@ -1,14 +1,30 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
+import Login from './pages/Login';
 import ProfessionalProfile from './pages/ProfessionalProfile';
 import ServicesHistory from './pages/ServicesHistory';
 import EditClient from './pages/EditClient';
-
+import Home from './pages/Home';
+import SearchClient from './pages/SearchClient';
+import SingupClient from './pages/SingupClient';
+import SingupProfessional from './pages/SingupProfessional';
 
 const Routes = () =>{
     return(
     <Switch>
+        <Route path="/searchClient">
+            <SearchClient/>
+        </Route>
+
+        <Route path="/singupClient">
+            <SingupClient/>
+        </Route>
+
+        <Route path="/signupProfessional">
+            <SingupProfessional/>
+        </Route>
+
         <Route path="/servicesHistory">
             <ServicesHistory/>
         </Route>
@@ -21,8 +37,12 @@ const Routes = () =>{
             <ProfessionalProfile/>
         </Route>
 
-        <Route path="/">
-            <ProfessionalProfile/>
+        <Route path="/home">
+            <Home/>
+        </Route>
+
+        <Route exact path="/">
+            <Login/>
         </Route>
     </Switch>
     );

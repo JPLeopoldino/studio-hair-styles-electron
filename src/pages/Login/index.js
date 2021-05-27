@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { Container, Form, Input, Button, Miss, Label, BgForm,} from './styles';
+import {Link} from 'react-router-dom';
 
 const Login = () =>{
     const validate = values => {
@@ -60,9 +61,9 @@ const Login = () =>{
                             />
                             {formik.errors.senha ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.senha}</span> : null}
                         </div>
-                        <div>
-                            <Button type="submit">ENTRAR</Button>
-                        </div>
+                        <Link to="/home">
+                            <Button>ENTRAR</Button>
+                        </Link>
                         <div>
                             <Miss href="#">Esqueceu sua senha?</Miss>
                         </div>
