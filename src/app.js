@@ -1,16 +1,13 @@
 import React from 'react';
+import Routes from './routes';
+import {BrowserRouter} from 'react-router-dom';
 
-import ProfessionalProfile from './pages/ProfessionalProfile';
-import ServicesHistory from './pages/ServicesHistory';
-import EditClient from './pages/EditClient';
-import SearchClient from './pages/SearchClient';
 
 const App = () =>{
     return (
-       <ProfessionalProfile />
-      /* <ServicesHistory/> */
-      /* <EditClient/> */
-      // <SearchClient />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     );
 }
 

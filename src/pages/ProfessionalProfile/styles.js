@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 
@@ -56,7 +55,7 @@ export const Buttons = styled.div`
 `;
 
 export const Edit = styled.div`
-    width:50%;float:left;margin-top:12px;
+    width:50%;float:left;margin-top:12px;color:white;
 
     @media(max-width: 690px) {
     width:100%;
@@ -64,7 +63,7 @@ export const Edit = styled.div`
 `;
 
 export const History = styled.div`
-    width:50%;float:right;margin-top:12px;
+    width:50%;float:right;margin-top:12px;color:white;
 
     @media(max-width: 690px) {
     width:100%;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {ContainerProfile, Header, ImgProfile, UserInfo, Buttons, Edit, History, MainText, Text} from './styles';
+import {Link} from 'react-router-dom';
 
 const ProfessionalProfile = () =>{
     return(
@@ -17,8 +18,13 @@ const ProfessionalProfile = () =>{
             </Header>
 
             <Buttons>
-                <Edit>Editar Usuario</Edit>
-                <History>Historico de serviços</History>
+                <Link to="/editClient">
+                    <Edit>Editar Usuário</Edit>
+                </Link>
+                
+                <Link to="/servicesHistory">
+                    <History>Histórico de serviços</History>
+                </Link>
             </Buttons>
 
             <div style={{backgroundColor:'blueviolet',height:400,}}>
