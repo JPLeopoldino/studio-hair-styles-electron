@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 100vw;
     height: 100vh;
     color:white;
-    padding:5px;
     font-size:1.7rem;
     font-weight:300;
     background-image: linear-gradient(#5E21AB, #b478ed);
@@ -69,7 +67,6 @@ export const Img = styled.img`
 `;
 
 export const ImgContainer = styled.div`
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
