@@ -55,7 +55,8 @@
     "files": [
       "app/**/*",
       "node_modules/**/*",
-      "package.json"
+      "package.json",
+      "assets/"
     ],
     "publish": null
   }

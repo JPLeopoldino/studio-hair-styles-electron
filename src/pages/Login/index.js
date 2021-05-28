@@ -1,7 +1,8 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { Container, Form, Input, Button, Miss, Label, BgForm,} from './styles';
+import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer} from './styles';
 import {Link} from 'react-router-dom';
+
 
 const Login = () =>{
     const validate = values => {
@@ -33,16 +34,17 @@ const Login = () =>{
     });
 
     return(
-        <div>
             <Container>
-                <h1 style={{textAlign:'center',textShadow:'1px 1px black'}}>Hair Styles Studio</h1>
+                <ImgContainer>
+                    <Img src="./assets/Logo.svg"/>
+                </ImgContainer>
                 <BgForm>   
                     <Form>
                         <div>
                             <Label for="Login">Login</Label>
                             <Input 
                                 type="text" 
-                                id="Login"
+                                id="login"
                                 placeholder="Login"
                                 value={formik.values.login}
                                 onChange={formik.handleChange}
@@ -53,7 +55,7 @@ const Login = () =>{
                             <Label for="Senha">Senha </Label>
                             <Input 
                                 type="password"
-                                id="Senha"
+                                id="senha"
                                 placeholder="Senha"
                                 minLength="8"
                                 value={formik.values.senha}
@@ -70,7 +72,6 @@ const Login = () =>{
                     </Form>
                 </BgForm>                    
             </Container>
-        </div>
     );
 }
 

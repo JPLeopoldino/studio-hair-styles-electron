@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-Logo">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="Logo" clip-path="url(#clip-Logo)">
+    <g id="menu" transform="translate(12.206 108.512) rotate(-56)">
+      <rect id="Retângulo_5" data-name="Retângulo 5" width="85.509" height="10.246" rx="5.123" transform="translate(33.726 49.563)" fill="#C833CA"/>
+      <rect id="Retângulo_4" data-name="Retângulo 4" width="30.737" height="10.246" rx="5.123" transform="translate(44.677 28.196)" fill="#C833CA"/>
+      <rect id="Retângulo_6" data-name="Retângulo 6" width="83.174" height="10.246" rx="5.123" transform="translate(6.559 6.829)" fill="#C833CA"/>
+    </g>
+  </g>
+</svg>
