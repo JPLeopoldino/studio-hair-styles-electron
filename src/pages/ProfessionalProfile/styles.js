@@ -37,11 +37,7 @@ export const UserInfo = styled.div`
 `;
 
 export const MainText = styled.h1`
-    font-weight:300;
-`;
-
-export const Text = styled.p`
-    line-height:10px;
+    margin-top:15px; font-weight:300;
 `;
 
 export const Buttons = styled.div`

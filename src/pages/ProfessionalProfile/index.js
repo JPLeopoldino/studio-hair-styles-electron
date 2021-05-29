@@ -1,5 +1,5 @@
 import React from 'react';
-import {ContainerProfile, Header, ImgProfile, UserInfo, Buttons, Edit, History, MainText, Text} from './styles';
+import {ContainerProfile, Header, ImgProfile, UserInfo, Buttons, Edit, History, MainText} from './styles';
 import {Link} from 'react-router-dom';
 
 const ProfessionalProfile = () =>{
@@ -10,8 +10,8 @@ const ProfessionalProfile = () =>{
 
                 <UserInfo>
                     <MainText>USER NAME</MainText>
-                    <Text>EMAIL@EMAIL.COM</Text>
-                    <Text>1612345678</Text>
+                    <p>EMAIL@EMAIL.COM</p>
+                    <p>1612345678</p>
                 </UserInfo>
 
                 
