@@ -47,8 +47,7 @@ export const Button = styled.button`
     border:none;
     color:white;
     font-size:1rem;
-    margin-top:5px;
-    margin-left: 35%;
+    margin-left: 70px;
 `;
 
 export const Miss = styled.a`
