@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, FormDiv, InputStyles, Button } from './styles';
+import { Container, FormDiv, InputStyles, Button, TitleStyle } from './styles';
 import {Link} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -21,7 +21,7 @@ const EditClient = () =>{
     return(
         <div>
             <Container>
-                <h1 style={{textAlign:'center'}}>Editar Usuário</h1>
+                <TitleStyle>Editar Usuário</TitleStyle>
 
                 <FormDiv onSubmit={formik.handleSubmit}>
                     <InputStyles
