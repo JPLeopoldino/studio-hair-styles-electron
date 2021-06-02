@@ -37,7 +37,7 @@ export const UserInfo = styled.div`
 `;
 
 export const MainText = styled.h1`
-    margin-top:15px; font-weight:300;
+    margin-top:15px; font-weight:300;color:white;
 `;
 
 export const Buttons = styled.div`
