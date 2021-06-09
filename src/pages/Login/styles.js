@@ -53,7 +53,8 @@ export const Button = styled.button`
 export const Miss = styled.a`
     padding: 5px;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
+    margin-left: 15px;
 `;
 
 export const Label = styled.label`
