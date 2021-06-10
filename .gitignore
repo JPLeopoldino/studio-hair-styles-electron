@@ -13,3 +13,5 @@ icons/
 
 # Jest Snapshot Folder
 **/__snapshots__/
+
+./package-lock.json
