@@ -27,3 +27,7 @@ export const Button = styled.button`
     font-size:1rem;
     margin-top:5px;margin-left:5px;
 `;
+
+export const TitleStyle = styled.h1`
+    text-align: center;color:white;
+`;

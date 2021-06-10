@@ -2,7 +2,8 @@ import React from 'react';
 import DataTable from 'react-data-table-component';
 import NavMenu from '../../components/NavMenu';
 import { MainContainer } from '../../styles';
-import { Container } from './styles';
+import { Container, Button } from './styles';
+import { Link } from 'react-router-dom';
 
 const columns = [
     {
@@ -12,7 +13,17 @@ const columns = [
     {
         name: "Email",
         selector: "email"
-    },    
+    },
+    {
+        name: "Telefone",
+        selector: "phone"
+    },
+    {
+        name: "Ações",
+        cell: row => <Link to="/EditClient">
+            <Button>Editar</Button>
+        </Link>      
+    },
 ]; 
 const data = [
     {
@@ -29,9 +40,16 @@ const data = [
         "email": "gabriel@gmail.com",        
         "phone": "16 94444-2222",
         "profile_image": null,
-        "birthdate": null       
-    }
-
+        "birthdate": null     
+    },
+    {
+        "id": 5,
+        "name": "Gabriel Silva",
+        "email": "gabriel@gmail.com",        
+        "phone": "16 94444-2222",
+        "profile_image": null,
+        "birthdate": null 
+    },
 ]
 
 const SearchClient = () => {
@@ -42,8 +60,11 @@ const SearchClient = () => {
                     <DataTable 
                         title = "Clientes"
                         columns = {columns}
-                        data = {data}
+                        data = {data}                                                                   
                     />
+                    <Link to="/Home">
+                        <Button>Agendar</Button>
+                    </Link>
                 </Container>          
         </MainContainer>
     );

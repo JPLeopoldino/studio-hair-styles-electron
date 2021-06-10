@@ -1,33 +1,24 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer} from './styles';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 
 const Login = () =>{
-    const validate = values => {
-        const errors = {};
-
-        // VALIDAÇÃO DE LOGIN
-        if (!values.login){
-            errors.login = 'O Login é obrigatório!';
-        };
-        
-        // VALIDAÇÃO DE SENHA
-        if (!values.senha){
-            errors.senha = 'A senha é obrigatória!';
-        } else if (values.senha.length !== 14){
-            errors.senha = 'Senha Inválida.';
-        };
-        return errors;
-    }
-
     const formik = useFormik({
         initialValues: {
             login:'',
             senha:'',
         },
-        validate,
+        validationSchema: Yup.object({
+            login: Yup.string().required('Esse campo é obrigatório!'),
+            senha: Yup.string().required('Esse campo é obrigatória!').matches(
+                /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+                "A senha deve conter pelo menos 8 caracteres, uma maiúscula, um número e um caractere especial"
+            ),
+
+        }),
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         }
@@ -47,9 +38,9 @@ const Login = () =>{
                                 id="login"
                                 placeholder="Login"
                                 value={formik.values.login}
-                                onChange={formik.handleChange}
+                                {...formik.getFieldProps('login')}
                             />
-                          {formik.errors.login ? <span style={{color:'red',fontSize:'12px'}}>{formik.errors.login}</span> : null}
+                          {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.login}</span> : null}
                         </div>
                         <div>
                             <Label for="Senha">Senha </Label>
@@ -58,10 +49,9 @@ const Login = () =>{
                                 id="senha"
                                 placeholder="Senha"
                                 minLength="8"
-                                value={formik.values.senha}
-                                onChange={formik.handleChange}
+                                {...formik.getFieldProps('senha')}
                             />
-                            {formik.errors.senha ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.senha}</span> : null}
+                            {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.senha}</span> : null}
                         </div>
                         <Link to="/home">
                             <Button>ENTRAR</Button>

@@ -6,7 +6,7 @@ const ServicesHistory = () =>{
     return(
         <div>
             <HistoryContainer>
-                <h1>Histórico de serviços</h1>
+                <h1 style={{color:'white'}}>Histórico de serviços</h1>
 
                 <ul>
                     <List>nome serviço</List>
