@@ -17,8 +17,8 @@ export const Header = styled.div`
 
 export const ImgProfile = styled.img`
     background-color:whitesmoke;
-    width:21%;float:left;
-    height:250px;border-radius:15px;
+    width:22%;float:left;
+    height:250px;border-radius:13px;
     margin-top:25px;margin-left:50px;
 
 
