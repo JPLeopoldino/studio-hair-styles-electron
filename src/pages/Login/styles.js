@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 export const Container = styled.div`
     height: 100vh;
@@ -11,11 +12,12 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-    width:50%;
-    margin-left: 21%;
-    @media(max-width: 690px) {
+    width:92%;
+    margin-left: 5px;
+    margin-top: 20px;
+    /*@media(max-width: 690px) {
     width:90%;
-  }
+  }*/
     display: flex;
     flex-direction: column;
 `;
@@ -23,17 +25,17 @@ export const Form = styled.form`
 export const BgForm = styled.div`
     background: white;
     margin:auto;
-    max-width: 30%;
+    max-width: 35%;
     min-height: 40vh;
     padding: 2rem;
     box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
-    border-radius: 8px;
+    border-radius: 4px;
 `;
 
 export const Input = styled.input`
     width:100%;
     padding:10px;
-    margin:4px;
+    margin:5px;
     border:none;
     border-radius:6px;
     font-size:1.1rem;
@@ -42,28 +44,32 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    padding:8px;
-    background-color:#ff4dff;
-    border:none;
-    color:white;
-    font-size:1rem;
-    margin-left: 70px;
+    width: 105.8%;
+    height: 38px;
+    background-color: ${colors.pink};
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bold;
 `;
 
 export const Miss = styled.a`
-    padding: 5px;
+    margin-left: 130px;
     text-align: center;
     font-size: 18px;
-    margin-left: 15px;
 `;
 
 export const Label = styled.label`
-    margin: 4px;
+    font-size: 30px;
+    font-family: sans-serif;
+    margin-left: 5px;
+    font-weight: 300;
+    font-style: normal;
     color: #5E21AB;
 `;
 
 export const Img = styled.img`
-   
+
 `;
 
 export const ImgContainer = styled.div`

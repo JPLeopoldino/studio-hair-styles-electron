@@ -32,33 +32,33 @@ const Login = () =>{
                 <BgForm>   
                     <Form>
                         <div>
-                            <Label for="Login">Login</Label>
+                            <Label htmlFor="Login">Login</Label>
                             <Input 
                                 type="text" 
                                 id="login"
-                                placeholder="Login"
+                                placeholder="Nome do Usuario"
                                 value={formik.values.login}
                                 {...formik.getFieldProps('login')}
                             />
                           {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.login}</span> : null}
                         </div>
                         <div>
-                            <Label for="Senha">Senha </Label>
+                            <Label htmlFor="Senha">Senha</Label>
                             <Input 
                                 type="password"
                                 id="senha"
-                                placeholder="Senha"
+                                placeholder="Sua senha..."
                                 minLength="8"
                                 {...formik.getFieldProps('senha')}
                             />
                             {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'12px',}}>{formik.errors.senha}</span> : null}
                         </div>
-                        <Link to="/home">
-                            <Button>ENTRAR</Button>
-                        </Link>
                         <div>
                             <Miss href="#">Esqueceu sua senha?</Miss>
                         </div>
+                        <Link to="/home">
+                            <Button>ENTRAR</Button>
+                        </Link>
                     </Form>
                 </BgForm>                    
             </Container>
