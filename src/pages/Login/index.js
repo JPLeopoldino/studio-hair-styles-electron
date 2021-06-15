@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer, Span} from './styles';
+import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer} from './styles';
 import {Link, Redirect} from 'react-router-dom';
 
 
@@ -41,10 +41,9 @@ const Login = () =>{
                                 value={formik.values.login}
                                 {...formik.getFieldProps('login')}
                             />
-                          {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',}}>{formik.errors.login}</span> : null}
+                          {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.login}</span> : null}
                         </div>
                         <div>
-                            {/* <Label htmlFor="Senha">Senha</Label> */}
                             <Input 
                                 type="password"
                                 id="senha"
@@ -52,7 +51,7 @@ const Login = () =>{
                                 minLength="8"
                                 {...formik.getFieldProps('senha')}
                             />
-                            {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'16px',}}>{formik.errors.senha}</span> : null}
+                            {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.senha}</span> : null}
                         </div>
                         <Link to="/home">
                             <Button>ENTRAR</Button>
