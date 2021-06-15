@@ -25,28 +25,35 @@ const EditProfessional = () =>{
 
                 <FormDiv onSubmit={formik.handleSubmit}>
                     <InputStyles
-                        type="text" name="name" value={formik.values.name}
-                        onChange={formik.handleChange} placeholder="Nome"
+                        type="text" name="name" 
+                        placeholder="Nome"
+                        {...formik.getFieldProps('name')}
                     />
 
                     <InputStyles 
-                        type="email" name="email" value={formik.values.email}
-                        onChange={formik.handleChange} placeholder="Email"
+                        type="email" name="email" 
+                        placeholder="Email"
+                        {...formik.getFieldProps('email')}
+                    />
+                    {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : null}
+
+                    <InputStyles
+                        type="text" name="password"
+                        placeholder="Senha"
+                        {...formik.getFieldProps('password')}
+                    />
+                    {formik.errors.password && formik.touched.password ? <span>{formik.errors.password}</span> : null}
+
+                    <InputStyles
+                        type="number" name="phone"
+                        placeholder="Telefone"
+                        {...formik.getFieldProps('phone')}
                     />
 
                     <InputStyles
-                        type="text" name="password" value={formik.values.password}
-                        onChange={formik.handleChange} placeholder="Senha"
-                    />
-
-                    <InputStyles
-                        type="number" name="phone" value={formik.values.phone}
-                        onChange={formik.handleChange} placeholder="Telefone"
-                    />
-
-                    <InputStyles
-                        type="text" name="birthDate" value={formik.values.birthDate}
-                        onChange={formik.handleChange} placeholder="Data de Nascimento"
+                        type="text" name="birthDate"
+                        placeholder="Data de Nascimento"
+                        {...formik.getFieldProps('birthDate')}
                     />
 
                     <br/><Button type="submit">ENVIAR</Button>
