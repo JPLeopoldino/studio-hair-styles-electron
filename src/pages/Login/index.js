@@ -28,6 +28,7 @@ const Login = () =>{
             <Container>
                 <ImgContainer>
                     <Img src="./assets/Logo.svg"/>
+                    <h5>Hair Styles Studio</h5>
                 </ImgContainer>
                 <BgForm>   
                     <Form>
