@@ -36,7 +36,9 @@ const columns = [
         name: "Ações",
         cell: row => <Link to="/EditClient">
             <Button>Editar</Button>
+            <Button>Desativar</Button>
         </Link>      
+                  
     },
 ]; 
 const data = [
@@ -97,7 +99,7 @@ const SearchClient = () => {
                         </Scheduler>
                     </Paper>
                 </div> 
-                </div>        
+            </div>
         </MainContainer>
     );
 };
