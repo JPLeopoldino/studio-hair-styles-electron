@@ -31,3 +31,10 @@ export const Button = styled.button`
 export const TitleStyle = styled.h1`
     text-align: center;color:white;
 `;
+
+export const ButtonContainer = styled.div`
+    width: 13vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;

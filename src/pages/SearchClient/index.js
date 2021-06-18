@@ -2,7 +2,8 @@ import React from 'react';
 import DataTable from 'react-data-table-component';
 import NavMenu from '../../components/NavMenu';
 import { MainContainer } from '../../styles';
-import { Container, Button } from './styles';
+import { Container, ButtonContainer } from './styles';
+import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import Paper from '@material-ui/core/Paper';
@@ -34,10 +35,13 @@ const columns = [
     },
     {
         name: "Ações",
-        cell: row => <Link to="/EditClient">
-            <Button>Editar</Button>
-            <Button>Desativar</Button>
-        </Link>      
+        cell: row => 
+            <ButtonContainer> 
+                <Link to="/EditClient">
+                    <Button color="primary" variant="contained" >Editar</Button>
+                </Link>
+                <Button color="primary" variant="contained" >Desativar</Button>
+            </ButtonContainer>
                   
     },
 ]; 
@@ -80,7 +84,7 @@ const SearchClient = () => {
                         data = {data}                                                                   
                     />
                     <Link to="/Home">
-                        <Button>Agendar</Button>
+                        <Button color="primary" variant="contained" >Agendar</Button>
                     </Link>
                 </Container> 
                 <div style={{marginTop:30}}>

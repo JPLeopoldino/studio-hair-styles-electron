@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, FormDiv, InputStyles, Button, TitleStyle } from './styles';
+import { Container, FormDiv, InputStyles, TitleStyle, ButtonContainer } from './styles';
+import { Button } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -43,11 +44,14 @@ const EditClient = () =>{
                         onChange={formik.handleChange} placeholder="Data de Nascimento"
                     />
 
-                    <br/><Button type="submit">ENVIAR</Button>
+                    <br/>
+                    <ButtonContainer>                    
+                        <Button type="submit" color="primary" variant="contained" >ENVIAR</Button>
 
-                    <Link to="/searchClient">
-                        <Button>VOLTAR</Button>
-                    </Link>                    
+                        <Link to="/searchClient">
+                            <Button color="primary" variant="contained" >VOLTAR</Button>
+                        </Link>  
+                    </ButtonContainer>                  
                     
                 </FormDiv>
 
