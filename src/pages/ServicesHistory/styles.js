@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+export const Title = styled.h1`
+    margin-bottom: 15px;
+    margin-top: 10px;
+    color:#7031BF;
+    font-weight: 400;
+`;
 
 export const HistoryContainer = styled.div`
     height:700px;
-    color:white;padding:5px;
+    color:white;padding:10px;
     font-size:1.7rem;font-weight:300;
-    background-image: linear-gradient(#5E21AB, #b478ed);
+    background-image: linear-gradient(#FFFFFF, #C69DEE);
 
 
     @media(max-width: 400px) {
@@ -14,8 +20,8 @@ export const HistoryContainer = styled.div`
 `;
 
 export const List = styled.li`
-    background-color:white;
-    margin-top:3px;color:#5E21AB;
+    background-color:#7F3FD0;
+    margin-top:8px;color:whitesmoke;
     width:90%;padding:10px;
     list-style-type: none;
 `;
@@ -23,5 +29,5 @@ export const List = styled.li`
 export const Button = styled.button`
     padding:8px;background-color:#ff4dff;
     border:none;color:white;
-    font-size:1rem;
+    font-size:1rem;margin-top:10px;
 `;

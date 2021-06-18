@@ -1,27 +1,57 @@
 import React from 'react';
-import { Container, FormDiv, InputStyles, Button } from './styles';
+import { Container, FormDiv, InputStyles, Button, TitleStyle } from './styles';
 import {Link} from 'react-router-dom';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
 
 const EditClient = () =>{
+
+    const formik = useFormik({
+        initialValues: {
+            name: '', email: '',
+            phone: '',
+            birthDate: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().required('O email é obrigatorio').email('Email invalido'),            
+        })
+    });
+    
     return(
         <div>
             <Container>
-                <h1 style={{textAlign:'center'}}>Editar Usuário</h1>
+                <TitleStyle>Editar Cliente</TitleStyle>
 
-                <FormDiv>
-                    <InputStyles type="text" placeholder="Nome"/>
-                    <InputStyles type="email" placeholder="Email"/>
-                    <InputStyles type="text" placeholder="Senha"/>
-                    <InputStyles type="number" placeholder="Telefone"/>
-                    <InputStyles type="text" placeholder="Data de Nascimento"/>
+                <FormDiv onSubmit={formik.handleSubmit}>
+                    <InputStyles
+                        type="text" name="name" value={formik.values.name}
+                        onChange={formik.handleChange} placeholder="Nome"
+                    />
 
-                    <br/><Button>ENVIAR</Button>
+                    <InputStyles 
+                        type="email" name="email" value={formik.values.email}
+                        onChange={formik.handleChange} placeholder="Email"
+                    />                    
 
-                    <Link to="/professionalProfile">
+                    <InputStyles
+                        type="number" name="phone" value={formik.values.phone}
+                        onChange={formik.handleChange} placeholder="Telefone"
+                    />
+
+                    <InputStyles
+                        type="text" name="birthDate" value={formik.values.birthDate}
+                        onChange={formik.handleChange} placeholder="Data de Nascimento"
+                    />
+
+                    <br/><Button type="submit">ENVIAR</Button>
+
+                    <Link to="/searchClient">
                         <Button>VOLTAR</Button>
-                    </Link>
+                    </Link>                    
                     
                 </FormDiv>
+
+                
             </Container>
         </div>
     );

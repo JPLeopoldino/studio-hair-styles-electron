@@ -1,12 +1,12 @@
 import React from 'react';
-import {HistoryContainer, Button, List} from './styles';
+import {HistoryContainer, Button, List, Title} from './styles';
 import {Link} from 'react-router-dom';
 
 const ServicesHistory = () =>{
     return(
-        <div>
+        <div style={{marginTop:15}}>
             <HistoryContainer>
-                <h1>Histórico de serviços</h1>
+                <Title>Histórico de serviços</Title>
 
                 <ul>
                     <List>nome serviço</List>

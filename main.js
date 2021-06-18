@@ -10,12 +10,16 @@ let mainWindow;
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    /* width: 800,
+    height: 600, */
     webPreferences: {
       nodeIntegration: true
     }
   });
+
+  mainWindow.maximize()
+
+  //mainWindow.setFullScreen(true)
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

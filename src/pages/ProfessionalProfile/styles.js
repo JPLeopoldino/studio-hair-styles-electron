@@ -17,8 +17,8 @@ export const Header = styled.div`
 
 export const ImgProfile = styled.img`
     background-color:whitesmoke;
-    width:21%;float:left;
-    height:250px;border-radius:15px;
+    width:22%;float:left;
+    height:250px;border-radius:13px;
     margin-top:25px;margin-left:50px;
 
 
@@ -37,11 +37,7 @@ export const UserInfo = styled.div`
 `;
 
 export const MainText = styled.h1`
-    font-weight:300;
-`;
-
-export const Text = styled.p`
-    line-height:10px;
+    margin-top:15px; font-weight:300;color:white;
 `;
 
 export const Buttons = styled.div`
