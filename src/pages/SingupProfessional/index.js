@@ -53,7 +53,7 @@ const SingupProfessional = () => {
             name: Yup.string().required('O nome é obrigatório'),
             birthdate: Yup.string().required('A data de nascimento é obrigatória'),
             email: Yup.string().required('O e-mail é obrigatório').email('E-mail inválido'), // email ja tem um sistema de validação configurado por trás dele no yup
-            phone: Yup.number().test('len', 'O número deve conter o DDD', val => val.toString().length === 11),
+           //phone: Yup.number().test('len', 'O número deve conter o DDD', val => val.toString().length === 11),
             job: Yup.string().required('A função é obrigatória!'),
             password: Yup.string().required('A senha é obrigatória').min(8, 'minimo 8 caracteres'),
             passwordTwo: Yup.string().required('A confirmação da senha é obrigatória').oneOf([Yup.ref('password')], 'As senhas não são iguais')

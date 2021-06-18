@@ -17,8 +17,8 @@ const Routes = () =>{
     <HashRouter>
         <Switch>
             <Route path="/searchClient" component={SearchClient}/>
-            {/* <Route path="/singupClient" component={SingupClient}/>
-            <Route path="/signupProfessional" component={SingupProfessional}/> */}
+            <Route path="/singupClient" component={SingupClient}/>
+            <Route path="/signupProfessional" component={SingupProfessional}/>
             <Route path="/servicesHistory" component={ServicesHistory}/>
             <Route path="/editClient" component={EditClient}/>
             <Route path="/editProfessional" component={EditProfessional} />
