@@ -10,9 +10,11 @@ import SearchClient from './pages/SearchClient';
 import SingupClient from './pages/SingupClient';
 import SingupProfessional from './pages/SingupProfessional';
 
+
 const Routes = () =>{
     return(
     <Switch>
+
         <Route path="/searchClient">
             <SearchClient/>
         </Route>
@@ -41,8 +43,8 @@ const Routes = () =>{
             <Home/>
         </Route>
 
-        <Route exact path="/">
-            <Login/>
+        <Route /*exact*/ path="/">
+            <SingupProfessional/>
         </Route>
     </Switch>
     );
