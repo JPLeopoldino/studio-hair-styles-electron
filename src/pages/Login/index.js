@@ -3,9 +3,13 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer} from './styles';
 import {Link, Redirect} from 'react-router-dom';
+import { useNavigationBar } from '../../hooks/NavigationBarProvider';
 
 
 const Login = () =>{
+    
+    const { setOpen } = useNavigationBar();
+    
     const formik = useFormik({
         initialValues: {
             login:'',
@@ -54,7 +58,11 @@ const Login = () =>{
                             {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.senha}</span> : null}
                         </div>
                         <Link to="/home">
-                            <Button>ENTRAR</Button>
+                            <Button
+                                onClick={() => setOpen(false)}
+                            >
+                                ENTRAR
+                            </Button>
                         </Link>
                         <div>
                             <Miss href="#">Esqueceu sua senha?</Miss>

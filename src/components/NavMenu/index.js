@@ -8,16 +8,30 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 240;
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import GroupAddRoundedIcon from '@material-ui/icons/GroupAddRounded';
+import PersonAddRoundedIcon from '@material-ui/icons/PersonAddRounded';
+import HistoryRoundedIcon from '@material-ui/icons/HistoryRounded';
+import EditRoundedIcon from '@material-ui/icons/EditRounded';
+import AssignmentIndRoundedIcon from '@material-ui/icons/AssignmentIndRounded';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded';
+
+import { useNavigationBar } from '../../hooks/NavigationBarProvider';
+
+import colors from '../../styles/colors';
+
+const drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +53,9 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   menuButton: {
-    marginRight: 10,
+    marginRight: 6,
+    marginLeft: 200,
+    color: '#FFF',
   },
   hide: {
     display: 'none',
@@ -50,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
+    backgroundColor: colors.pink,
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -57,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   drawerClose: {
+    backgroundColor: colors.pink,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -68,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolbar: {
+    backgroundColor: colors.pink,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -77,18 +96,30 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: 'none',
-    color: '#000',
+    color: '#FFF',
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+  },
+  icon: {
+    color: '#FFF',
+    transition: '0.2s',
+  },
+  iconOpen: {
+    minWidth: 45,
+    // transition: '0.2s',
+  },
+  iconClose: {
+    marginLeft: 5,
+    // transition: '0.2s',
   },
 }));
     
 const NavMenu = () => {
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const {open, setOpen} = useNavigationBar()
   
     const handleDrawerOpen = () => {
       setOpen(true);
@@ -113,7 +144,7 @@ const NavMenu = () => {
             }}
         >
             <div className={classes.toolbar}>
-                <IconButton onClick={handleDrawerClose}>
+                <IconButton onClick={handleDrawerClose} className={clsx(classes.menuButton)}>
                     {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                 </IconButton>
                 <IconButton
@@ -130,7 +161,7 @@ const NavMenu = () => {
             </div>
             <Divider />
             <List>
-            {['Home', 'Perfil', 'Buscar Clientes'].map((text, index) => (
+            {/* {['Home', 'Perfil', 'Buscar Clientes'].map((text, index) => (
                 <Link 
                     to={index === 0 ? index === 1 ? '/professionalProfile' : '/home' : index === 1 ? '/professionalProfile' :'/searchClient' }
                     className={classes.link}
@@ -140,9 +171,131 @@ const NavMenu = () => {
                         <ListItemText primary={text} />
                 </ListItem>
                 </Link>
-            ))}
+            ))} */}
+            
+              <Link to="/home" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <HomeRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Home" />
+                </ListItem>
+              </Link>
+
             </List>
             <Divider />
+            <List>
+              
+              <Link to="/professionalProfile" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <AssignmentIndRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Perfil" />
+                </ListItem>
+              </Link>
+              
+              <Link to="/servicesHistory" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <HistoryRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Histórico de Serviços" />
+                </ListItem>
+              </Link>
+
+            </List>
+            <Divider />
+            <List>
+
+              <Link to="/searchClient" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <SearchRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Buscar Cliente" />
+                </ListItem>
+              </Link>
+              
+              <Link to="/editClient" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <EditRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Editar Cliente" />
+                </ListItem>
+              </Link>
+
+            </List>
+            <Divider />
+            <List>
+
+              <Link to="/singupClient" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <GroupAddRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastrar Cliente" />
+                </ListItem>
+              </Link>
+
+              <Link to="/signupProfessional" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <PersonAddRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Cadastrar Profissional" />
+                </ListItem>
+              </Link>
+
+            </List>
+            <Divider />
+            <List>
+
+              <Link to="/" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon className={clsx(classes.icon, {
+                      [classes.iconOpen]: open,
+                      [classes.iconClose]: !open,
+                    })} 
+                  >
+                    <ExitToAppRoundedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Login" />
+                </ListItem>
+              </Link>
+
+            </List>
+
+            {/* <Divider />
             <List>
             {['Criar Cliente', 'Criar Profissional', 'Sair'].map((text, index) => (
                 <ListItem button key={text}>
@@ -150,7 +303,7 @@ const NavMenu = () => {
                 <ListItemText primary={text} />
                 </ListItem>
             ))}
-            </List>
+            </List> */}
         </Drawer>
 
         // <SC.MainContainer>
