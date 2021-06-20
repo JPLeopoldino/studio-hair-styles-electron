@@ -1,31 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, FormDiv, InputStyles, Button, TitleStyle } from './styles';
 import {Link} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import {api} from '../../services/api';
 
 const EditProfessional = () =>{
+    const [dados, setDados] = useState({});
+
+    const getProfessional = async () =>{
+       try{
+            const response = await api.get('/professionals/5', {headers:{
+            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTc2Njc2NjksImV4cCI6MzMxNDM3MTAwNjl9.Lt6XDBTtbHX15CmEi4r7R_ezgoSE0k3Q3JRvVHedH5M'
+            
+        }});
+        if(response.data) (setDados(response.data))
+        /* setDados(response.data); */ 
+       }
+       catch(error){
+        console.log(error);
+       }
+    }
+    
+
+    const updateProfessional = async () =>{
+       try{
+        const response = await api.put('/professionals/5', {headers:{
+            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTc2Njc2NjksImV4cCI6MzMxNDM3MTAwNjl9.Lt6XDBTtbHX15CmEi4r7R_ezgoSE0k3Q3JRvVHedH5M'
+        }});
+        setDados(response.data);
+       }
+       catch(error){
+        console.log(error);
+       }
+    }
+
+    useEffect(()=>{
+        getProfessional();
+    }, [])
 
     const formik = useFormik({
         initialValues: {
-            name: '', email: '',
-            password: '', phone: '',
-            birthDate: '',
+            name: dados.name || '',
+            email: dados.email || '',
+            password: dados.password || '',
+            phone: dados.phone || '',
+            birthDate: dados.birthDate || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required('O email é obrigatorio').email('Email invalido'),
             password: Yup.string().required('A senha é obrigatoria'),
         })
     });
-    
+
     return(
         <div>
             <Container>
-                <TitleStyle>Editar Usuário</TitleStyle>
-
+                <TitleStyle>Editar Profissional</TitleStyle>
+                
                 <FormDiv onSubmit={formik.handleSubmit}>
                     <InputStyles
-                        type="text" name="name" 
+                        type="text" name="name"
                         placeholder="Nome"
                         {...formik.getFieldProps('name')}
                     />
@@ -63,6 +98,7 @@ const EditProfessional = () =>{
                     </Link>
                     
                 </FormDiv>
+            
             </Container>
         </div>
     );
