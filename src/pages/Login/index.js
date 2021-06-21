@@ -1,10 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Container, Form, Input, Button, Miss, Label, BgForm, Img, ImgContainer} from './styles';
-import {Link, Redirect} from 'react-router-dom';
+import { Container, Form, Input, Miss, Label, BgForm, Img, ImgContainer} from './styles';
+import { Link } from 'react-router-dom';
 import { useNavigationBar } from '../../hooks/NavigationBarProvider';
-
+import { Button } from '@material-ui/core';
 
 const Login = () =>{
     
@@ -32,7 +32,7 @@ const Login = () =>{
             <Container>
                 <ImgContainer>
                     <Img src="./assets/Logo.svg"/>
-                    <h5>Hair Styles Studio</h5>
+                    <h1>Hair Styles Studio</h1>
                 </ImgContainer>
                 <BgForm>   
                     <Form>
@@ -45,7 +45,7 @@ const Login = () =>{
                                 value={formik.values.login}
                                 {...formik.getFieldProps('login')}
                             />
-                          {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.login}</span> : null}
+                            {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.login}</span> : null}
                         </div>
                         <div>
                             <Input 
@@ -58,14 +58,10 @@ const Login = () =>{
                             {formik.errors.senha && formik.touched.senha ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.senha}</span> : null}
                         </div>
                         <Link to="/home">
-                            <Button
-                                onClick={() => setOpen(false)}
-                            >
-                                ENTRAR
-                            </Button>
+                            <Button color="primary" variant="contained" style={{marginTop:'20px', width:'100%'}}>ENVIAR</Button>
                         </Link>
                         <div>
-                            <Miss href="#">Esqueceu sua senha?</Miss>
+                            <Miss href="">Esqueceu sua senha?</Miss>
                         </div>
                     </Form>
                 </BgForm>                    

@@ -41,7 +41,7 @@ export const Input = styled.input`
     box-shadow: 0px 1px 0.5px black;
 `;
 
-export const Button = styled.button`
+/* export const Button = styled.button`
     width: 100%;
     height: 40px;
     margin-top: 20px;
@@ -54,11 +54,11 @@ export const Button = styled.button`
     &:hover{
         background-color: #5E21AB;
     }
-`;
+`; */
 
 export const Miss = styled.a`
     font-size: 18px;
-    margin: 5px;
+    margin: 10px;
     color: #929292;
     text-decoration: none;
     display: flex;
