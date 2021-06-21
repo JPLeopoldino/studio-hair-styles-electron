@@ -28,7 +28,7 @@ const Login = () =>{
             <Container>
                 <ImgContainer>
                     <Img src="./assets/Logo.svg"/>
-                    <h5>Hair Styles Studio</h5>
+                    <h1>Hair Styles Studio</h1>
                 </ImgContainer>
                 <BgForm>   
                     <Form>
@@ -41,7 +41,7 @@ const Login = () =>{
                                 value={formik.values.login}
                                 {...formik.getFieldProps('login')}
                             />
-                          {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.login}</span> : null}
+                            {formik.errors.login && formik.touched.login ? <span style={{color:'red',fontSize:'16px',fontWeight: '300'}}>{formik.errors.login}</span> : null}
                         </div>
                         <div>
                             <Input 
@@ -57,7 +57,7 @@ const Login = () =>{
                             <Button>ENTRAR</Button>
                         </Link>
                         <div>
-                            <Miss href="#">Esqueceu sua senha?</Miss>
+                            <Miss href="">Esqueceu sua senha?</Miss>
                         </div>
                     </Form>
                 </BgForm>                    
