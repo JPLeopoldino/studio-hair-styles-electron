@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 // import './app.less';
 import { ThemeProvider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
+import { NavigationBarProvider } from './hooks/NavigationBarProvider';
 import colors from './styles/colors';
 
 const theme = createMuiTheme({
@@ -23,9 +24,11 @@ const theme = createMuiTheme({
 const App = () =>{
     return (
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
+        <NavigationBarProvider>
+          <BrowserRouter>
+            <Routes />
+          </BrowserRouter>
+        </NavigationBarProvider>
       </ThemeProvider>
     );
 }
