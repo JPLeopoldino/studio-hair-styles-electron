@@ -5,6 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { NavigationBarProvider } from './hooks/NavigationBarProvider';
+import { AuthProvider } from './hooks/AuthProvider'
 import colors from './styles/colors';
 
 const theme = createMuiTheme({
@@ -23,13 +24,15 @@ const theme = createMuiTheme({
 
 const App = () =>{
     return (
-      <ThemeProvider theme={theme}>
-        <NavigationBarProvider>
-          <BrowserRouter>
-            <Routes />
-          </BrowserRouter>
-        </NavigationBarProvider>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <NavigationBarProvider>
+            <BrowserRouter>
+              <Routes />
+            </BrowserRouter>
+          </NavigationBarProvider>
+        </ThemeProvider>
+      </AuthProvider>
     );
 }
 
