@@ -4,18 +4,19 @@ import {Link} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {api} from '../../services/api';
+import {useAuth} from '../../hooks/AuthProvider';
 
 const EditProfessional = () =>{
     const [dados, setDados] = useState({});
+    const {auth} = useAuth();
 
     const getProfessional = async () =>{
        try{
-            const response = await api.get('/professionals/5', {headers:{
-            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTc2Njc2NjksImV4cCI6MzMxNDM3MTAwNjl9.Lt6XDBTtbHX15CmEi4r7R_ezgoSE0k3Q3JRvVHedH5M'
+            const response = await api.get(`/professionals/${auth.id}`, {headers:{
+            'x-access-token': `${auth.token}`
             
         }});
         if(response.data) (setDados(response.data))
-        /* setDados(response.data); */ 
        }
        catch(error){
         console.log(error);
@@ -23,12 +24,18 @@ const EditProfessional = () =>{
     }
     
 
-    const updateProfessional = async () =>{
+    const updateProfessional = async (value) =>{
        try{
-        const response = await api.put('/professionals/5', {headers:{
-            'x-access-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTc2Njc2NjksImV4cCI6MzMxNDM3MTAwNjl9.Lt6XDBTtbHX15CmEi4r7R_ezgoSE0k3Q3JRvVHedH5M'
+        const response = await api.put(`/professionals/${auth.id}`,{
+            name:value.name,
+            email:value.email,
+            password:value.password,
+            phone:value.phone,
+        },
+        {headers:{
+            'x-access-token': `${auth.token}`
         }});
-        setDados(response.data);
+        if(response.data) (setDados(response.data))
        }
        catch(error){
         console.log(error);
@@ -45,12 +52,15 @@ const EditProfessional = () =>{
             email: dados.email || '',
             password: dados.password || '',
             phone: dados.phone || '',
-            birthDate: dados.birthDate || '',
         },
+        enableReinitialize:true,
         validationSchema: Yup.object({
             email: Yup.string().required('O email é obrigatorio').email('Email invalido'),
             password: Yup.string().required('A senha é obrigatoria'),
-        })
+        }),
+        onSubmit: values => {
+            updateProfessional(values);
+        }
     });
 
     return(
@@ -73,7 +83,7 @@ const EditProfessional = () =>{
                     {formik.errors.email && formik.touched.email ? <span>{formik.errors.email}</span> : null}
 
                     <InputStyles
-                        type="text" name="password"
+                        type="password" name="password"
                         placeholder="Senha"
                         {...formik.getFieldProps('password')}
                     />
@@ -83,12 +93,6 @@ const EditProfessional = () =>{
                         type="number" name="phone"
                         placeholder="Telefone"
                         {...formik.getFieldProps('phone')}
-                    />
-
-                    <InputStyles
-                        type="text" name="birthDate"
-                        placeholder="Data de Nascimento"
-                        {...formik.getFieldProps('birthDate')}
                     />
 
                     <br/><Button type="submit">ENVIAR</Button>
