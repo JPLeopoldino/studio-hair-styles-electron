@@ -1,25 +1,26 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
-const useAuth = () => {
+const AuthContext = createContext();
 
-    const [auth, setAuth] = useState('');
+const AuthProvider = ({children}) => {
 
-    const getData= async () => {
-        try{
-            const resp = await AsyncStorage.getItem('auth');
-            if(resp !== null)
-                setAuth(resp);
-        } catch (error) {
-            console.log(error);
-        }
-   }
+    const [auth, setAuth] = useState({})
 
-   useEffect(() => {
-       getData();
-   }, [])
-
-   return (auth !== '' ? JSON.parse(auth) : null);
+    return(
+        <AuthContext.Provider
+            value={{
+                auth,
+                setAuth
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    )
 }
 
-export default useAuth;
+const useAuth = () => {
+    const context = useContext(AuthContext);
+    return context
+}
+
+export { AuthProvider, useAuth };
