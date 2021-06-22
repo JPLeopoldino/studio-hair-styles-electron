@@ -1,41 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import { useFormik } from 'formik';
-import { Container, Form, Input, Button, Label, BgForm, TouchableOpacity} from './styles';
+import { Container, Form, Input, Button, Label, BgForm} from './styles';
 import * as Yup from 'yup';
-//import useAuth from '../../hooks/useAuth';
-//import AsyncStorage from '@react-native-async-storage/async-storage';
-//import { Alert } from 'react-native';
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/AuthProvider';
 
 
-const SingupProfessional = () => {
+const SingupClient = () => {
 
-    //const authentication = useAuth();
+    const [dados, setDados] = useState({});
+    const { auth } = useAuth();
 
-  /*  const auth = async(values)=>{
-        try {
-            const response = await api.post('/login', {
-                email: values.email,
-                password: values.password
-            });
-            if(response.data.auth){
-                await AsyncStorage.setItem('auth', JSON.stringify(response.data));
-                navigation.navigate('Home');
-            } else{
-                Alert.alert('não encontrado');
-            }
-            
-        } catch (e) {
-            console.log(e);
+
+    const CadClient = async (value) =>{
+        try{
+         const response = await api.post(`/clients/`,{
+             name:value.name,
+             email:value.email,
+             phone:value.phone,
+             password:value.password,
+         },
+         {headers:{
+             'x-access-token': `${auth.token}`
+         }});
+         //if(response.data) (setDados(response.data))
         }
-    }
-
-    useEffect(()=>{
-         if(authentication?.token){ 
-            navigation.navigate('Home');
+        catch(error){
+         console.log(error);
         }
-    }, [authentication]);
- 
- */
+     }
+
 
     const formik = useFormik ({
         initialValues: {
@@ -55,8 +49,7 @@ const SingupProfessional = () => {
 
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2)); /* o JSON é um objeto e stringify é uma função dele
-            ( Ela pega um objeto no formato JSON( os valores neste caso) e constrói uma string( um texto) */
+            CadClient(values);
         }
     });
 
@@ -98,7 +91,6 @@ const SingupProfessional = () => {
 
                     />
 
-                    {formik.errors.phone && formik.touched.phone ? <span style={{textAlign:'Center',fontSize:'15px',color:'red',}}>{formik.errors.phone}</span> : null}
                 </div>
                 <div>
                     <Label for="password"> Senha </Label>
@@ -132,4 +124,4 @@ const SingupProfessional = () => {
     );
 }
 
-export default SingupProfessional;
+export default SingupClient;

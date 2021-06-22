@@ -10,6 +10,7 @@ import SearchClient from './pages/SearchClient';
 import SingupClient from './pages/SingupClient';
 import SingupProfessional from './pages/SingupProfessional';
 import EditProfessional from './pages/EditProfessional';
+import { LogoffContainer } from './components/NavMenu/styles';
 
 
 const Routes = () =>{
