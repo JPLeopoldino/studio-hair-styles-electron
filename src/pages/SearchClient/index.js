@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import NavMenu from '../../components/NavMenu';
 import { MainContainer } from '../../styles';
 import { Container, ButtonContainer } from './styles';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import { api } from '../../services/api';
+import { useAuth } from '../../hooks/AuthProvider';
+// import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
@@ -32,6 +36,10 @@ const columns = [
     {
         name: "Telefone",
         selector: "phone"
+    },
+    {
+        name: "Data de Nascimento",
+        selector: "birthdate"
     },
     {
         name: "Ações",
@@ -73,15 +81,50 @@ const data = [
 ]
 
 const SearchClient = () => {
+    const {auth} = useAuth();
+    const [dados,setDados] = useState([]);
+    const getData = async() => {
+        try {
+            const response = await api.get('/clients', {
+                headers:{
+                    'x-access-token': auth.token
+                }
+            } );
+            setDados(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+
     return(
         <MainContainer >
             <NavMenu />
             <div>
+            {/* <Autocomplete
+                freeSolo
+                id="free-solo-2-demo"
+                disableClearable
+                // options={top100Films.map((option) => option.title)}
+                renderInput={(params) => ( */}
+                <TextField
+                    // {...params}
+                    label="Search input"
+                    margin="normal"
+                    variant="outlined"
+                    InputProps={{type: 'search' }}
+                />
+               {/*  )}
+            /> */}
                 <Container>          
                     <DataTable 
                         title = "Clientes"
                         columns = {columns}
-                        data = {data}                                                                   
+                        data = {dados}                                                                   
                     />
                     <Link to="/Home">
                         <Button color="primary" variant="contained" >Agendar</Button>

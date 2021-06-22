@@ -1,21 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, FormDiv, InputStyles, TitleStyle, ButtonContainer } from './styles';
 import { Button } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import {api} from '../../services/api';
+import {useAuth} from '../../hooks/AuthProvider';
 
 const EditClient = () =>{
+    const [dados, setDados] = useState({});
+    const {auth} = useAuth();
+
+    const getClient = async () =>{
+       try{
+            const response = await api.get(`/clients/${'7'}`, {headers:{
+            'x-access-token': `${auth.token}`
+            
+        }});
+        if(response.data) (setDados(response.data))
+       }
+       catch(error){
+        console.log(error);
+       }
+    }
+
+    const updateClient = async (value) =>{
+        try{
+         const response = await api.put(`/clients/${'7'}`,{
+             name:value.name,
+             email:value.email,
+             password:value.password,
+             phone:value.phone,
+         },
+         {headers:{
+             'x-access-token': `${auth.token}`
+         }});
+         if(response.data) (setDados(response.data))
+        }
+        catch(error){
+         console.log(error);
+        }
+     }
+ 
+     useEffect(()=>{
+         getClient();
+     }, [])
 
     const formik = useFormik({
         initialValues: {
-            name: '', email: '',
-            phone: '',
-            birthDate: '',
+            name: dados.name ||  '',
+            email: dados.email || '',
+            phone: dados.phone || '',
+            birthdate: dados.birthdate || '',
         },
+        enableReinitialize: true,
+
         validationSchema: Yup.object({
             email: Yup.string().required('O email é obrigatorio').email('Email invalido'),            
-        })
+        }),
+
+        onSubmit: values => {
+            updateClient(values)
+        }
+
     });
     
     return(
@@ -25,23 +72,27 @@ const EditClient = () =>{
 
                 <FormDiv onSubmit={formik.handleSubmit}>
                     <InputStyles
-                        type="text" name="name" value={formik.values.name}
-                        onChange={formik.handleChange} placeholder="Nome"
+                        type="text" name="name"
+                        placeholder="Nome"
+                        {...formik.getFieldProps('name')}
                     />
 
                     <InputStyles 
-                        type="email" name="email" value={formik.values.email}
-                        onChange={formik.handleChange} placeholder="Email"
+                        type="email" name="email"
+                        placeholder="Email"
+                        {...formik.getFieldProps('email')}
                     />                    
 
                     <InputStyles
-                        type="number" name="phone" value={formik.values.phone}
-                        onChange={formik.handleChange} placeholder="Telefone"
+                        type="number" name="phone"
+                        placeholder="Telefone"
+                        {...formik.getFieldProps('phone')}
                     />
 
                     <InputStyles
-                        type="text" name="birthDate" value={formik.values.birthDate}
-                        onChange={formik.handleChange} placeholder="Data de Nascimento"
+                        type="text" name="birthdate"
+                        placeholder="Data de Nascimento"
+                        {...formik.getFieldProps('birthdate')}
                     />
 
                     <br/>
