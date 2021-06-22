@@ -10,8 +10,8 @@ export const Title = styled.h1`
 export const HistoryContainer = styled.div`
     height:700px;
     color:white;padding:10px;
-    font-size:1.7rem;font-weight:300;
-    background-image: linear-gradient(#FFFFFF, #C69DEE);
+    font-size:1.8rem;font-weight:300;
+    background-color:white;
 
 
     @media(max-width: 400px) {
