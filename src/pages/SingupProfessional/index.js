@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { Container, Form, Input, Button, Label, BgForm } from './styles';
+import { Container, Form, Input, Label, BgForm } from './styles';
 import * as Yup from 'yup';
+import { Button} from '@material-ui/core';
 //import { Redirect } from 'react-router-dom';
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/AuthProvider';
@@ -15,38 +16,40 @@ const SingupProfessional = () => {
     const [dados, setDados] = useState({});
     const { auth } = useAuth();
 
-   /* const postProfessional = async () => {
+    /* const postProfessional = async () => {
+         try {
+             const response = await api.get(`/professionals/`, {
+                 headers: {
+                     'x-access-token': `${auth.token}`
+                 }
+             });
+             setDados(response.data);
+         }
+         catch (error) {
+             console.log(error);
+         }
+     } */
+
+    const CadProfessional = async (value) => {
         try {
-            const response = await api.get(`/professionals/`, {
-                headers: {
-                    'x-access-token': `${auth.token}`
-                }
-            });
+            const response = await api.post(`/professionals/`, {
+                name: value.name,
+                email: value.email,
+                phone: value.phone,
+                type: value.type,
+                password: value.password,
+            },
+                {
+                    headers: {
+                        'x-access-token': `${auth.token}`
+                    }
+                });
             setDados(response.data);
         }
         catch (error) {
             console.log(error);
         }
-    } */
-
-    const CadProfessional = async (value) =>{
-        try{
-         const response = await api.post(`/professionals/`,{
-             name:value.name,
-             email:value.email,
-             phone:value.phone,
-             type:value.type,
-             password:value.password,
-         },
-         {headers:{
-             'x-access-token': `${auth.token}`
-         }});
-         //setDados(response.data);
-        }
-        catch(error){
-         console.log(error);
-        }
-     }
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -77,96 +80,92 @@ const SingupProfessional = () => {
     return (
         <Container>
 
-                            <h1 style={{ textAlign: 'center', textShadow: '5px 5px black' }}> Cadastro de Profissionais </h1>
-                            <BgForm>
-                                <Form onSubmit={formik.handleSubmit}>
-                                    <div>
-                                        <Label for="name"> Nome</Label>
-                                        <Input
-                                            type="text"
-                                            id="name"
-                                            placeholder="Nome completo"
-                                            {...formik.getFieldProps('name')}
+            <h1 style={{ textAlign: 'center', textShadow: '5px 5px black' }}> Cadastro de Profissionais </h1>
+            <BgForm>
+                <Form onSubmit={formik.handleSubmit}>
+                    <div>
+                        <Label htmlFor="name"> Nome</Label>
+                        <Input
+                            type="text"
+                            id="name"
+                            placeholder="Nome completo"
+                            {...formik.getFieldProps('name')}
 
-                                        />
-                                        {formik.errors.name && formik.touched.name ? <span style={{ textAlign: 'right', fontSize: '15px', color: 'red', }}>{formik.errors.name}</span> : null}
-                                    </div>
-                                    <div>
-                                        <Label for="email"> E-mail</Label>
-                                        <Input
-                                            type="text"
-                                            id="email"
-                                            placeholder="Digite um e-mail válido"
-                                            {...formik.getFieldProps('email')}
+                        />
+                        {formik.errors.name && formik.touched.name ? <span style={{ textAlign: 'right', fontSize: '15px', color: 'red', }}>{formik.errors.name}</span> : null}
+                    </div>
+                    <div>
+                        <Label htmlFor="email"> E-mail</Label>
+                        <Input
+                            type="text"
+                            id="email"
+                            placeholder="Digite um e-mail válido"
+                            {...formik.getFieldProps('email')}
 
-                                        />
-                                        {formik.errors.email && formik.touched.email ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.email}</span> : null}
-                                    </div>
-                                    <div>
-                                        <Label for="phone"> Telefone</Label>
-                                        <Input
-                                            type="number"
-                                            id="phone"
-                                            placeholder="Digite seu telefone para contato"
-                                            {...formik.getFieldProps('phone')}
+                        />
+                        {formik.errors.email && formik.touched.email ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.email}</span> : null}
+                    </div>
+                    <div>
+                        <Label htmlFor="phone"> Telefone</Label>
+                        <Input
+                            type="number"
+                            id="phone"
+                            placeholder="Digite seu telefone para contato"
+                            {...formik.getFieldProps('phone')}
 
-                                        />
+                        />
 
-                                    </div>
-                                    <div>
-                                        <Label for="birthdate"> Data de aniversário</Label>
-                                        <Input
-                                            type="date"
-                                            id="birthdate"
-                                            {...formik.getFieldProps('birthdate')}
+                    </div>
+                    <div>
+                        <Label htmlFor="birthdate"> Data de aniversário</Label>
+                        <Input
+                            type="date"
+                            id="birthdate"
+                            {...formik.getFieldProps('birthdate')}
 
-                                        />
-                                        {formik.errors.birthdate && formik.touched.birthdate ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.birthdate}</span> : null}
-                                    </div>
-       
-                                    <div>
-                                        <Label for="type"> Função </Label>
-                                        <Input
-                                            type="text"
-                                            id="type"
-                                            placeholder="Ex: Cabelereira e Maquiadora"
-                                            {...formik.getFieldProps('type')}
+                        />
+                        {formik.errors.birthdate && formik.touched.birthdate ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.birthdate}</span> : null}
+                    </div>
 
-                                        />
-                                        {formik.errors.type && formik.touched.type ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.type}</span> : null}
-                                    </div>
-                                    <div>
-                                        <Label for="password"> Senha </Label>
-                                        <Input
-                                            type="password"
-                                            id="password"
-                                            placeholder="Digite uma senha forte"
-                                            {...formik.getFieldProps('password')}
-                                            rightIcon={
-                                                visible ? <VisibilityIcon onPress={() => setVisible(!visible)}/> : <VisibilityOffIcon onPress={() => setVisible(!visible)}/>
-                                            }
+                    <div>
+                        <Label htmlFor="type"> Função </Label>
+                        <Input
+                            type="text"
+                            id="type"
+                            placeholder="Ex: Cabelereira e Maquiadora"
+                            {...formik.getFieldProps('type')}
 
-                                        />
-                                        {formik.errors.password && formik.touched.password ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.password}</span> : null}
-                                    </div>
+                        />
+                        {formik.errors.type && formik.touched.type ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.type}</span> : null}
+                    </div>
+                    <div>
+                        <Label htmlFor="password"> Senha </Label>
+                        <Input
+                            type="password"
+                            id="password"
+                            placeholder="Digite uma senha forte"
+                            {...formik.getFieldProps('password')}
 
-                                    <div>
-                                        <Label for="passwordTwo"> Confirme a senha </Label>
-                                        <Input
-                                            type="password"
-                                            id="passwordTwo"
-                                            placeholder="Digite a senha novamente"
-                                            {...formik.getFieldProps('passwordTwo')}
+                        />
+                        {formik.errors.password && formik.touched.password ? <span style={{ textAlign: 'Center', fontSize: '15px', color: 'red', }}>{formik.errors.password}</span> : null}
+                    </div>
 
-                                        />
-                                        {formik.errors.passwordTwo && formik.touched.passwordTwo ? <span style={{ textAlign: 'right', fontSize: '15px', color: 'red', }}>{formik.errors.passwordTwo}</span> : null}
-                                    </div>
+                    <div>
+                        <Label htmlFor="passwordTwo"> Confirme a senha </Label>
+                        <Input
+                            type="password"
+                            id="passwordTwo"
+                            placeholder="Digite a senha novamente"
+                            {...formik.getFieldProps('passwordTwo')}
 
-                                    <Button onClick={formik.handleSubmit} style={{fontSize: '18px', }}> Enviar </Button>
+                        />
+                        {formik.errors.passwordTwo && formik.touched.passwordTwo ? <span style={{ textAlign: 'right', fontSize: '15px', color: 'red', }}>{formik.errors.passwordTwo}</span> : null}
+                    </div>
 
+                    <Button onClick={formik.handleSubmit} style={{ fontSize: '18px', }} color="primary" variant="contained"> Enviar </Button>
 
-                                </Form>
-                            </BgForm>
+                </Form>
+            </BgForm>
         </Container>
     );
 }
