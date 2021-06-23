@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../styles/colors';
 
 
 export const ContainerProfile = styled.div`
@@ -6,7 +7,7 @@ export const ContainerProfile = styled.div`
 `;
 
 export const Header = styled.div`
-    background-color:#5E21AB;
+    background-color: ${colors.pink};
     padding:6px;height:300px;
     width:100%;
 
@@ -38,10 +39,11 @@ export const UserInfo = styled.div`
 
 export const MainText = styled.h1`
     margin-top:15px; font-weight:300;color:white;
+    text-transform: capitalize;
 `;
 
 export const Buttons = styled.div`
-    background-color:#7F3FD0;
+    background-color: ${colors.dark_pink};
     padding:10px;text-align:center;
     width:100%;height:54px;
    

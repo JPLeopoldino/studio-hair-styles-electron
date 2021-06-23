@@ -64,7 +64,6 @@ const EditProfessional = () =>{
     });
 
     return(
-        <div>
             <Container>
                 <TitleStyle>Editar Profissional</TitleStyle>
                 
@@ -104,7 +103,6 @@ const EditProfessional = () =>{
                 </FormDiv>
             
             </Container>
-        </div>
     );
 }
 
