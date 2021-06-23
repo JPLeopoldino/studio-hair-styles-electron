@@ -27,7 +27,7 @@ const createWindow = () => {
     slashes: true
   }));
 
-  mainWindow.webContents.toggleDevTools();
+  // mainWindow.webContents.toggleDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
