@@ -54,3 +54,10 @@ export const Label = styled.label`
     margin-left: 10px;
 
 `;
+
+export const Button = styled.button`
+    padding:8px;background-color:#ff4dff;
+    border:none;color:white;
+    font-size:1rem;
+    margin-top:5px;margin-left:5px;
+`;
