@@ -216,10 +216,6 @@ const NavMenu = () => {
                 </ListItem>
               </Link>
 
-            </List>
-            <Divider />
-            <List>
-
               <Link to="/searchClient" className={classes.link}>
                 <ListItem button>
                   <ListItemIcon className={clsx(classes.icon, {
@@ -230,19 +226,6 @@ const NavMenu = () => {
                     <SearchRoundedIcon />
                   </ListItemIcon>
                   <ListItemText primary="Buscar Cliente" />
-                </ListItem>
-              </Link>
-              
-              <Link to="/editClient" className={classes.link}>
-                <ListItem button>
-                  <ListItemIcon className={clsx(classes.icon, {
-                      [classes.iconOpen]: open,
-                      [classes.iconClose]: !open,
-                    })} 
-                  >
-                    <EditRoundedIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Editar Cliente" />
                 </ListItem>
               </Link>
 
@@ -289,7 +272,7 @@ const NavMenu = () => {
                   >
                     <ExitToAppRoundedIcon />
                   </ListItemIcon>
-                  <ListItemText primary="Login" />
+                  <ListItemText primary="Logoff" />
                 </ListItem>
               </Link>
 

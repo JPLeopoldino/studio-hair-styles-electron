@@ -6,14 +6,16 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {api} from '../../services/api';
 import {useAuth} from '../../hooks/AuthProvider';
+import { useClient } from '../../hooks/ClientProvider';
 
 const EditClient = () =>{
     const [dados, setDados] = useState({});
     const {auth} = useAuth();
+    const { client } = useClient();
 
     const getClient = async () =>{
        try{
-            const response = await api.get(`/clients/${'7'}`, {headers:{
+            const response = await api.get(`/clients/${client}`, {headers:{
             'x-access-token': `${auth.token}`
             
         }});
@@ -27,7 +29,7 @@ const EditClient = () =>{
 
     const updateClient = async (value) =>{
         try{
-         const response = await api.put(`/clients/${'7'}`,{
+         const response = await api.put(`/clients/${client}`,{
              name:value.name,
              email:value.email,             
              phone:value.phone,
