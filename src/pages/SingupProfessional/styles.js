@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
-    height:685px;
+    height:99vh;
     color:white;padding:5px;
     font-size:1.7rem;font-weight:200;
-    background-image: linear-gradient(#5E21AB, #b478ed);
+    background-image: linear-gradient(#7B206F, #E19AE1);
     align-items: center;
     justify-content: center;
 `;
