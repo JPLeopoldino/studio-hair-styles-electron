@@ -17,6 +17,7 @@ const EditClient = () =>{
             'x-access-token': `${auth.token}`
             
         }});
+        
         if(response.data) (setDados(response.data))
        }
        catch(error){
@@ -28,9 +29,9 @@ const EditClient = () =>{
         try{
          const response = await api.put(`/clients/${'7'}`,{
              name:value.name,
-             email:value.email,
-             password:value.password,
+             email:value.email,             
              phone:value.phone,
+             birthdate:value.birthdate,
          },
          {headers:{
              'x-access-token': `${auth.token}`
@@ -84,7 +85,7 @@ const EditClient = () =>{
                     />                    
 
                     <InputStyles
-                        type="number" name="phone"
+                        type="text" name="phone"
                         placeholder="Telefone"
                         {...formik.getFieldProps('phone')}
                     />

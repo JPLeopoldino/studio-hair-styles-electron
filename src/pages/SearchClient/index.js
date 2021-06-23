@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import DataTable from 'react-data-table-component';
 import NavMenu from '../../components/NavMenu';
 import { MainContainer } from '../../styles';
@@ -53,36 +53,14 @@ const columns = [
                   
     },
 ]; 
-const data = [
-    {
-        "id": 2,
-        "name": "Maria Souza",
-        "email": "maria@gmail.com",       
-        "phone": "16 99999-3333",
-        "profile_image": null,
-        "birthdate": null        
-    },
-    {
-        "id": 4,
-        "name": "Gabriel Silva",
-        "email": "gabriel@gmail.com",        
-        "phone": "16 94444-2222",
-        "profile_image": null,
-        "birthdate": null     
-    },
-    {
-        "id": 5,
-        "name": "Gabriel Silva",
-        "email": "gabriel@gmail.com",        
-        "phone": "16 94444-2222",
-        "profile_image": null,
-        "birthdate": null 
-    },
-]
 
 const SearchClient = () => {
     const {auth} = useAuth();
     const [dados,setDados] = useState([]);
+    const [search, setSearch] = useState('');
+
+
+
     const getData = async() => {
         try {
             const response = await api.get('/clients', {
@@ -96,9 +74,29 @@ const SearchClient = () => {
         }
     }
 
+    const searchData = useCallback ( async() => {
+        try {
+            const response = await api.get(`/clients/search/${search}`, 
+            {
+                    headers:{
+                        'x-access-token': auth.token
+                    }
+                }
+            );
+              setDados(response.data);  
+
+        } catch (error) {
+            console.log(error);
+        }
+    }, [search])
+
     useEffect(() => {
-        getData();
-    }, []);
+        if(search === '') {
+            getData();
+        }else{
+            searchData();
+        }       
+    }, [search]);
 
 
     return(
@@ -113,7 +111,9 @@ const SearchClient = () => {
                 renderInput={(params) => ( */}
                 <TextField
                     // {...params}
+                    value={search}
                     label="Search input"
+                    onChange={(event) => setSearch(event.target.value)}
                     margin="normal"
                     variant="outlined"
                     InputProps={{type: 'search' }}
